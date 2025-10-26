@@ -178,9 +178,9 @@ The JWT token is stored in `localStorage` and automatically attached to HTTP req
 *(Add later if needed — for example)*
 
 ```markdown
-![Login Page](./frontend/src/assets/screens/login.png)
-![Article List](./frontend/src/assets/screens/articles.png)
-![Comments Section](./frontend/src/assets/screens/comments.png)
+![Login Page](./frontend/blog-frontend/src/assets/screens/login.png)
+![Article List](./frontend/blog-frontend/src/assets/screens/articles.png)
+![Comments Section](./frontend/blog-frontend/src/assets/screens/comments.png)
 ```
 
 ---
