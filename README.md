@@ -195,8 +195,8 @@ This project is licensed under the **MIT License**.
 ## 📬 Contact
 
 * **👨‍💻 Name:** Med Ousji
-* **✉️ Email:** [med.ousji@gmail.com](mailto:med.ousji@gmail.com)
-* **🔗 LinkedIn:** [linkedin.com/in/med-ousji](https://linkedin.com/in/mohamed-ousji)
+* **✉️ Email:** [medousji24@gmail.com](mailto:medousji24@gmail.com)
+* **🔗 LinkedIn:** [linkedin.com/in/mohamed-ousji](https://linkedin.com/in/mohamed-ousji)
 * **🌍 GitHub:** [github.com/medousji](https://github.com/medousji)
 
 ---
