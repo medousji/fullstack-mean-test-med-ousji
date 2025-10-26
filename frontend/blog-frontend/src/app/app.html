@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Blog</a>
+
+    <div class="d-flex align-items-center gap-2">
+      <a routerLink="/articles" class="btn btn-link text-light">Articles</a>
+
+      <!-- Show only if logged in -->
+      <a
+        *ngIf="auth.hasToken()"
+        routerLink="/articles/new"
+        class="btn btn-link text-light"
+      >
+        Create
+      </a>
+
+      <!-- When user is NOT logged in -->
+      <ng-container *ngIf="!auth.hasToken(); else logged">
+        <a routerLink="/login" class="btn btn-link text-light">Login</a>
+        <a routerLink="/register" class="btn btn-link text-light">Register</a>
+      </ng-container>
+
+      <!-- When user is logged in -->
+      <ng-template #logged>
+        <span class="text-light me-2">
+          👋 {{ username() }}
+        </span>
+        <button class="btn btn-outline-light btn-sm" (click)="logout()">
+          Logout
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <h3>Articles</h3>
+
+  <div *ngFor="let a of articles" class="card mb-3 p-3 shadow-sm">
+    <!-- Edit mode -->
+    <div *ngIf="editingArticleId === a._id; else viewMode">
+      <input
+        type="text"
+        [(ngModel)]="editTitle"
+        class="form-control mb-2"
+        placeholder="Title"
+      />
+      <textarea
+        [(ngModel)]="editContent"
+        class="form-control mb-2"
+        rows="3"
+        placeholder="Content"
+      ></textarea>
+
+      <div class="d-flex gap-2">
+        <button class="btn btn-success btn-sm" (click)="saveEdit(a)">💾 Save</button>
+        <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">❌ Cancel</button>
+      </div>
+    </div>
+
+    <!-- View mode -->
+    <ng-template #viewMode>
+      <h5>
+        <a [routerLink]="['/articles', a._id]" class="text-decoration-none">
+          {{ a.title }}
+        </a>
+      </h5>
+      <p>{{ a.content }}</p>
+      <small>Author: {{ a.author?.username }}</small>
+
+      <div class="mt-2">
+        <button
+          class="btn btn-sm btn-outline-primary me-2"
+          (click)="startEdit(a)"
+        >
+          ✏️ Edit
+        </button>
+        <button
+          class="btn btn-sm btn-outline-danger"
+          (click)="confirmDelete(a._id)"
+        >
+          🗑️ Delete
+        </button>
+      </div>
+    </ng-template>
+  </div>
+
+  <a routerLink="/articles/new" class="btn btn-primary mt-3">
+    + Create new
+  </a>
+</div>

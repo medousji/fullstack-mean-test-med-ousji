@@ -1,0 +1,7 @@
+# Global ignores
+node_modules/
+dist/
+.env
+.idea/
+.DS_Store
+npm-debug.log*

@@ -1,0 +1,50 @@
+<div class="comment-list mt-4">
+  <h3>Comments ({{ comments.length }})</h3>
+
+  <!-- New comment box -->
+  <div *ngIf="isLoggedIn(); else loginAlert" class="new-comment mb-3">
+    <textarea
+      [(ngModel)]="newCommentText"
+      placeholder="Write a comment..."
+      rows="3"
+      class="form-control mb-2"
+    ></textarea>
+    <button class="btn btn-primary btn-sm" (click)="addComment()">Add Comment</button>
+  </div>
+  <ng-template #loginAlert>
+    <div class="alert alert-info py-2">Please log in to add a comment.</div>
+  </ng-template>
+
+  <!-- No comments -->
+  <div *ngIf="comments.length === 0" class="text-muted fst-italic">No comments yet.</div>
+
+  <!-- List of comments -->
+  <div *ngFor="let comment of comments; trackBy: trackByCommentId" class="comment-item border-bottom py-2">
+    <strong class="text-primary">{{ comment.author?.username || 'Anonymous' }}</strong>
+
+    <!-- Comment text or edit input -->
+    <p *ngIf="editingCommentId !== comment._id; else editBlock" class="mb-1">{{ comment.text }}</p>
+    <ng-template #editBlock>
+      <div class="edit-comment d-flex flex-column gap-2">
+        <input [(ngModel)]="editingText" class="form-control form-control-sm" />
+        <div>
+          <button class="btn btn-success btn-sm me-2" (click)="saveEdit(comment)">Save</button>
+          <button class="btn btn-secondary btn-sm" (click)="cancelEdit()">Cancel</button>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- Edit/Delete buttons only for comment owner -->
+    <div *ngIf="isCommentOwner(comment)" class="comment-actions mt-1">
+      <button *ngIf="editingCommentId !== comment._id"
+              class="btn btn-link btn-sm text-decoration-none"
+              (click)="startEdit(comment)">
+        ✏️ Edit
+      </button>
+      <button class="btn btn-link btn-sm text-danger text-decoration-none"
+              (click)="confirmDelete(comment)">
+        🗑️ Delete
+      </button>
+    </div>
+  </div>
+</div>

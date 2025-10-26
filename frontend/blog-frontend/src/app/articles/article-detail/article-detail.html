@@ -1,0 +1,10 @@
+<div class="container mt-4" *ngIf="!loading && article">
+  <div class="card p-4 mb-4">
+    <h2>{{ article.title }}</h2>
+    <p class="mt-2">{{ article.content }}</p>
+    <hr />
+    <small class="text-muted">Author: {{ article.author?.username }}</small>
+  </div>
+
+  <!-- Comments Section -->
+  <app-comment-list [articleId]="article._id"></app-comment-list>
